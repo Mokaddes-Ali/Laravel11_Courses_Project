@@ -23,13 +23,11 @@ return new class extends Migration
             $table->text('link');
             $table->unsignedBigInteger('submitted_by');
             $table->unsignedBigInteger('duration');
-            $table->unsignedTinyInteger('level');
+            $table->unsignedTinyInteger('platform_id');
 
-            $table->foreign('submitted_by')->references('id')->on('users');
-            $table->foreign('platform_id')->references('id')->on('platforms');
+            $table->foreign('submitted_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('set null');
 
-            $table->int('platform_id');
-            $table->PRIMARY KEY (`id`)
             $table->timestamps();
         });
     }
