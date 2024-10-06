@@ -28,30 +28,36 @@ return new class extends Migration
             $table->foreign('submitted_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
 
-            $table->timestamps(0);
+            $table->timestamps();
         });
 
-        Schema::table('course_series', function (Blueprint $table) {
+        Schema::create('course_series', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('series_id');
+            $table->timestamps(0);
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
         });
 
 
-        Schema::table('course_topic', function (Blueprint $table) {
+        Schema::create('course_topic', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('topic_id');
+            $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
         });
 
 
-        Schema::table('course_author', function (Blueprint $table) {
+        Schema::create('course_author', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('author_id');
+            $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
