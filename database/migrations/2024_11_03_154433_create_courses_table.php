@@ -18,12 +18,12 @@ return new class extends Migration
             $table->unsignedSmallInteger('year');
             $table->float('price')->default(0.00);
             $table->string('image', 255)->nullable();
-            $table->float('price')->default(0);
+            $table->string('slug', 255);
             $table->text('content');
             $table->text('link');
-            $table->unsignedBigInteger('submitted_by');
+            $table->unsignedBigInteger('submitted_by')->nullable();
             $table->unsignedBigInteger('duration');
-            $table->unsignedTinyInteger('platform_id');
+            $table->unsignedTinyInteger('platform_id')->nullable();
 
             $table->foreign('submitted_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('set null');
@@ -33,12 +33,29 @@ return new class extends Migration
 
 
         Schema::table('course_topic', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('topic_id');
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('topic_id')->nullable();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('set null');
         });
+
+        Schema::table('course_series', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('series_id')->nullable();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
+            $table->foreign('series_id')->references('id')->on('series')->onDelete('set null');
+        });
+
+        Schema::table('course_author', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('set null');
+        });
+
 
 
 
