@@ -32,9 +32,12 @@ return new class extends Migration
         });
 
 
-        Schema::table('courses', function (Blueprint $table) {
-            $table->foreign('submitted_by')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('set null');
+        Schema::table('course_topic', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('topic_id');
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('set null');
         });
 
 
