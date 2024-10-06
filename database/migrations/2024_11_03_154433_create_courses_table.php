@@ -31,6 +31,14 @@ return new class extends Migration
             $table->timestamps(0);
         });
 
+        Schema::table('course_series', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('series_id');
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
+        });
+
 
         Schema::table('course_topic', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
@@ -40,13 +48,6 @@ return new class extends Migration
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
         });
 
-        Schema::table('course_series', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('series_id');
-
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
-        });
 
         Schema::table('course_author', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
