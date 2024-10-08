@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('price')->default(0.00);
             $table->string('image', 255)->nullable();
             $table->string('slug', 255);
-            $table->text('content');
+            $table->text('description');
             $table->text('link');
             $table->unsignedBigInteger('submitted_by');
             $table->unsignedBigInteger('duration');

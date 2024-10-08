@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Topic;
 use App\Models\Series;
+use App\Models\Platform;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +35,14 @@ class DatabaseSeeder extends Seeder
                 Topic::create([
                     'name' => $name,
                 ]);
+
+                $platform = ['Udemy', 'Coursera',
+                'Pluralsight', 'LinkedIn', 'Skillshare'];
+                foreach ($platform as $name) {
+                    Platform::create([
+                        'name' => $name,
+                    ]);
+                }
             }
         }
     }
