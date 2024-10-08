@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Courses;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Topic;
@@ -16,12 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(50)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
 
         $series = ['PHP', 'JS', 'CSS', 'HTML', 'LARAVEL'];
         foreach ($series as $name) {
@@ -45,5 +42,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+            Courses::factory(100)->create();
     }
 }

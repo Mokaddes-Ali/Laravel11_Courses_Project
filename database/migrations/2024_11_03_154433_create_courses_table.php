@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->unsignedBigInteger('book')->default(0);
-            $table->unsignedSmallInteger('year');
+            $table->unsignedBigInteger('year');
             $table->float('price')->default(0.00);
             $table->string('image', 255)->nullable();
             $table->string('slug', 255);

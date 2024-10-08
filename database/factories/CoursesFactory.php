@@ -21,12 +21,14 @@ class CoursesFactory extends Factory
         return [
             'name' => $this->faker->name,
             'book' => $this->faker->randomNumber(),
-            'price' => $this->faker->randomFloat(),
+            'slug' => $this->faker->name,
+            'year' => rand(2000, 2021),
+            'price' => rand(0, 1000),
             'image' => $this->faker->name,
-            'description' => $this->faker->text,
-            'link' => $this->faker->text,
+            'description' => $this->faker->text(40),
+            'link' => $this->faker->text(30),
             'submitted_by' => User::all()->random()->id,
-            'duration' => $this->faker->randomNumber(1,2),
+            'duration' => rand(1, 10),
             'platform_id' => Platform::all()->random()->id,
         ];
     }
