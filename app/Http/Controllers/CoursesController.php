@@ -9,7 +9,10 @@ class CoursesController extends Controller
 {
     public function show()
     {
-        $course = Courses::all();
-        return $course;
+        $courses = Courses::all();
+         return $courses;
     }
+
+
+
 }
